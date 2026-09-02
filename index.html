@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Crect width=%2716%27 height=%2716%27 fill=%27%23000%27/%3E%3Cg fill=%27%23ffe100%27%3E%3Crect x=%277%27 y=%270%27 width=%272%27 height=%272%27/%3E%3Crect x=%274%27 y=%272%27 width=%278%27 height=%271%27/%3E%3Crect x=%273%27 y=%273%27 width=%2710%27 height=%2710%27/%3E%3Crect x=%274%27 y=%2713%27 width=%278%27 height=%271%27/%3E%3C/g%3E%3Crect x=%274%27 y=%276%27 width=%278%27 height=%273%27 fill=%27%23000%27/%3E%3Cg fill=%27%23ffe100%27%3E%3Crect x=%275%27 y=%277%27 width=%272%27 height=%271%27/%3E%3Crect x=%279%27 y=%277%27 width=%272%27 height=%271%27/%3E%3C/g%3E%3C/svg%3E">
+<title>見抜き算</title>
+<meta name="description" content="3桁の数字を推理して戦う、デッキ構築ダンジョンRPG「見抜き算」。ブラウザですぐに遊べます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#000; --ink:#fff; --dim:#9d9d9d; --faint:#4a4a4a; --yel:#ffe100;
+  --body:'DotGothic16','Hiragino Kaku Gothic ProN','Yu Gothic',monospace;
+  --disp:'Press Start 2P','DotGothic16',monospace;
+}
+*{ box-sizing:border-box; }
+html{ background:var(--bg); }
+body{
+  margin:0; min-height:100vh; background:var(--bg); color:var(--ink);
+  font-family:var(--body); line-height:1.9;
+  display:flex; align-items:center; justify-content:center; padding:32px 20px 64px;
+  -webkit-font-smoothing:none;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:repeating-linear-gradient(0deg, rgba(255,255,255,.045) 0 1px, transparent 1px 3px);
+}
+.wrap{ position:relative; z-index:1; width:100%; max-width:520px; text-align:center; }
+
+.emblem{
+  width:92px; height:92px; margin:0 auto 22px; border:4px solid var(--ink);
+  display:flex; align-items:center; justify-content:center;
+}
+.emblem svg{ width:76%; height:76%; display:block; color:var(--yel); }
+h1{
+  font-family:var(--disp); font-size:clamp(22px,6.4vw,30px); line-height:1.5;
+  margin:0 0 6px; letter-spacing:.02em;
+}
+.en{ font-family:var(--disp); font-size:10px; letter-spacing:.34em; color:var(--dim); margin:0 0 26px; }
+.lead{ font-size:14px; color:var(--dim); margin:0 auto 30px; max-width:26ch; text-align:left; }
+.lead b{ color:var(--ink); }
+
+.play{
+  display:inline-block; font-family:var(--body); font-size:17px; text-decoration:none;
+  color:var(--yel); background:var(--bg); border:4px solid var(--yel);
+  padding:16px 40px; margin-bottom:14px;
+}
+.play:hover, .play:focus-visible{ background:var(--yel); color:#000; outline:none; }
+.play:focus-visible{ box-shadow:0 0 0 3px var(--ink); }
+.sub{ font-size:11.5px; color:var(--dim); margin:0 0 40px; }
+
+.spec{
+  border:3px solid var(--faint); padding:16px 18px; text-align:left;
+  display:flex; flex-direction:column; gap:9px; margin-bottom:30px;
+}
+.spec div{ display:flex; gap:12px; font-size:12.5px; color:var(--dim); }
+.spec dt{ color:var(--dim); flex:0 0 88px; }
+.spec dd{ margin:0; color:var(--ink); }
+
+footer{ font-size:11.5px; color:var(--dim); line-height:2; }
+@media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="emblem">
+    <svg viewBox="0 0 16 16" shape-rendering="crispEdges" role="img" aria-label="見抜き算のキャラクター">
+      <g fill="currentColor">
+        <rect x="7" y="0" width="2" height="2"/>
+        <rect x="4" y="2" width="8" height="1"/>
+        <rect x="3" y="3" width="10" height="10"/>
+        <rect x="4" y="13" width="8" height="1"/>
+      </g>
+      <rect x="4" y="6" width="8" height="3" fill="#000"/>
+      <g fill="currentColor">
+        <rect x="5" y="7" width="2" height="1"/>
+        <rect x="9" y="7" width="2" height="1"/>
+      </g>
+    </svg>
+  </div>
+  <h1>見抜き算</h1>
+  <p class="en">MINUKIZAN</p>
+
+  <p class="lead">敵が隠した<b>3桁の数字</b>を推理して戦う、デッキ構築ダンジョンRPG。インストール不要、ブラウザですぐ遊べます。</p>
+
+  <a class="play" href="./minukizan/">▶ ゲームを遊ぶ</a>
+  <p class="sub">スマートフォン・パソコン対応／無料</p>
+
+  <div class="spec">
+    <div><dt>ジャンル</dt><dd>数字推理 × デッキ構築 × ダンジョン探索</dd></div>
+    <div><dt>あそび方</dt><dd>ヒットとブローを手がかりに数字を絞り込む</dd></div>
+    <div><dt>プレイ人数</dt><dd>1人（冒険）／2人（同じ端末で対戦）</dd></div>
+  </div>
+
+  <footer>
+    <p>このサイトは準備中です。<br>今後、他の作品やお知らせを追加していく予定です。</p>
+  </footer>
+
+</div>
+</body>
+</html>

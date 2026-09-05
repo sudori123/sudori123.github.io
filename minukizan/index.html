@@ -115,34 +115,9 @@ h1{ text-align:center; font-family:var(--font-num); font-size:24px; letter-spaci
 .title-rule{ width:140px; height:5px; margin:0 auto 12px; border-radius:3px;
   background:linear-gradient(90deg,transparent,var(--gold-dk),var(--gold),var(--gold-dk),transparent);
   box-shadow:0 1px 0 rgba(255,255,255,.22), 0 2px 6px rgba(0,0,0,.5); }
-
-/* ---------- クエスト ---------- */
-.quest-list{ display:flex; flex-direction:column; gap:11px; }
 .quest{ position:relative; display:flex; align-items:center; gap:11px; padding:11px 12px; border-radius:14px;
   text-align:left; border:3px solid var(--bronze-dk); background:linear-gradient(165deg,#3a2c18,#1a1209);
   box-shadow:0 5px 0 rgba(0,0,0,.42), 0 9px 16px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.09); width:100%; }
-.quest .q-icon{ flex:0 0 auto; width:56px; height:56px; border-radius:13px; display:flex; align-items:center; justify-content:center;
-  font-size:31px; border:2px solid rgba(0,0,0,.45);
-  box-shadow:inset 0 2px 4px rgba(255,255,255,.28), inset 0 -4px 8px rgba(0,0,0,.4), 0 2px 5px rgba(0,0,0,.5); }
-.quest .q-mid{ flex:1; min-width:0; }
-.q-tier{ font-size:10px; display:flex; align-items:center; gap:5px; }
-.q-tier .stars{ color:var(--gold); letter-spacing:-1px; font-size:11px; }
-.q-name{ font-size:14.5px; color:var(--text); margin-top:2px; text-shadow:0 1px 2px rgba(0,0,0,.8); }
-.q-enemy{ font-size:10.5px; color:var(--sub); margin-top:3px; }
-.q-quirk{ font-size:9.5px; color:#d9c4ff; margin-top:3px; }
-.q-right{ flex:0 0 auto; text-align:center; }
-.q-coin{ font-size:11px; color:var(--gold); }
-.clear-stamp{ margin-top:5px; display:inline-block; font-size:11px; color:#ffd9d9;
-  background:radial-gradient(circle at 40% 30%, #d4574d, #7e211a); border:2px solid #ffb0a4; border-radius:50%;
-  width:32px; height:32px; line-height:28px; transform:rotate(-14deg); box-shadow:0 2px 5px rgba(0,0,0,.55); }
-.quest.locked{ opacity:.45; filter:grayscale(.7); }
-.quest.locked .q-right{ font-size:22px; }
-.t1 .q-icon{ background:radial-gradient(circle at 35% 28%, #7de89b, #1d5c33); } .t1 .q-tier{ color:#7de89b; } .t1{ border-color:#2a7a45; }
-.t2 .q-icon{ background:radial-gradient(circle at 35% 28%, #7cc9f5, #17527d); } .t2 .q-tier{ color:#7cc9f5; } .t2{ border-color:#1f6a94; }
-.t3 .q-icon{ background:radial-gradient(circle at 35% 28%, #c9a0ff, #4a2a80); } .t3 .q-tier{ color:#c9a0ff; } .t3{ border-color:#5a3a8a; }
-.t4 .q-icon{ background:radial-gradient(circle at 35% 28%, #ffc074, #8a4a10); } .t4 .q-tier{ color:#ffc074; } .t4{ border-color:#a55c14; }
-.t5 .q-icon{ background:radial-gradient(circle at 35% 28%, #ff9a8a, #8a2418); } .t5 .q-tier{ color:#ff9a8a; } .t5{ border-color:#a5301f; }
-.t6 .q-icon{ background:radial-gradient(circle at 35% 28%, #ffe9ab, #8a5a12); } .t6 .q-tier{ color:var(--gold); } .t6{ border-color:var(--gold); }
 
 /* ---------- バトル ---------- */
 .battle-stage-name{ text-align:center; font-size:12px; color:var(--sub); margin:8px 0 4px; }
@@ -244,11 +219,6 @@ h1{ text-align:center; font-family:var(--font-num); font-size:24px; letter-spaci
   background:radial-gradient(circle at 35% 28%, #bff0ff, var(--cyan-dk) 80%); border:2px solid rgba(0,0,0,.45); box-shadow:0 2px 5px rgba(0,0,0,.55); }
 .card .c-desc{ font-size:10.5px; color:var(--sub); line-height:1.5; padding:9px; min-height:58px; flex:1; }
 .card button{ margin:0 9px 9px; padding:7px 8px; font-size:11.5px; }
-.r2 .c-head{ background:linear-gradient(180deg,#cfd6dd,#7c8894); } .r2{ border-color:#6b7682; }
-.r3 .c-head{ background:linear-gradient(180deg,#9fe0a8,#3f8a50); } .r3{ border-color:#2f7a42; }
-.r4 .c-head{ background:linear-gradient(180deg,#c9a0ff,#6a3fb0); } .r4{ border-color:#5a3a8a; }
-.r5 .c-head{ background:linear-gradient(180deg,#ffe9ab,#c98a10); } .r5{ border-color:var(--gold); }
-.r5 .c-stars{ color:#8a5a00; }
 
 /* 数字パッド */
 .pad{ display:grid; grid-template-columns:repeat(3,60px); gap:11px; justify-content:center; margin:12px auto; }
@@ -268,7 +238,6 @@ h1{ text-align:center; font-family:var(--font-num); font-size:24px; letter-spaci
 .log{ max-height:150px; overflow-y:auto; font-size:11.5px; line-height:1.75; background:#150e07;
   border:2px solid var(--bronze-dk); border-radius:11px; padding:10px 12px; box-shadow:inset 0 3px 10px rgba(0,0,0,.6); }
 .log::-webkit-scrollbar{ width:5px; } .log::-webkit-scrollbar-thumb{ background:var(--gold-dk); border-radius:3px; }
-.log .e-you{ color:var(--green); } .log .e-cpu{ color:var(--red); } .log .e-sys{ color:var(--gold); }
 .chips{ display:flex; flex-wrap:wrap; gap:5px; }
 .chip{ background:linear-gradient(180deg,#4a3620,#241a0c); border:1px solid var(--bronze-dk); border-radius:999px;
   padding:4px 11px; font-size:10.5px; color:var(--sub); }
@@ -299,11 +268,6 @@ h1{ text-align:center; font-family:var(--font-num); font-size:24px; letter-spaci
   border-radius:50%; font-family:var(--font-num); font-size:10px; color:#2a1a02;
   background:radial-gradient(circle at 35% 28%, var(--gold-lt), var(--gold-dk) 80%);
   border:2px solid rgba(0,0,0,.5); box-shadow:0 1px 3px rgba(0,0,0,.6); }
-.mini-card.m2{ border-color:var(--silver-dk); } .mini-card.m2 .mc-top{ background:linear-gradient(180deg,rgba(207,214,221,.28),transparent); }
-.mini-card.m3{ border-color:#2f7a42; } .mini-card.m3 .mc-top{ background:linear-gradient(180deg,rgba(107,214,143,.28),transparent); }
-.mini-card.m4{ border-color:var(--purple-dk); } .mini-card.m4 .mc-top{ background:linear-gradient(180deg,rgba(168,119,234,.30),transparent); }
-.mini-card.m5{ border-color:var(--gold); } .mini-card.m5 .mc-top{ background:linear-gradient(180deg,rgba(240,193,76,.35),transparent); }
-.mini-card.m5{ box-shadow:0 3px 0 rgba(0,0,0,.42), 0 0 16px rgba(240,193,76,.35); }
 .mini-card.dim{ opacity:.32; filter:grayscale(.6); }
 .slot-empty{ border:2px dashed var(--bronze); border-radius:9px; background:rgba(0,0,0,.25);
   min-height:82px; display:flex; align-items:center; justify-content:center; color:#5a4326; font-size:19px; }
@@ -328,8 +292,6 @@ h1{ text-align:center; font-family:var(--font-num); font-size:24px; letter-spaci
 .eq-item .ei-nm{ font-size:10.5px; color:var(--text); line-height:1.3; }
 .eq-item .ei-st{ font-size:9px; color:var(--gold); letter-spacing:-1px; }
 .eq-item .ei-ef{ font-size:9px; color:var(--green); line-height:1.35; margin-top:2px; }
-.eq-item.e5{ border-color:var(--gold); } .eq-item.e4{ border-color:var(--purple-dk); }
-.eq-item.e3{ border-color:#2f7a42; } .eq-item.e2{ border-color:var(--silver-dk); }
 /* 装着中の強調はレアリティ色より優先させる（この行より上に書くと上書きされてしまう） */
 .eq-item.on.on{ border-color:var(--gold-lt); background:linear-gradient(170deg,#5a4422,#241a0c);
   box-shadow:0 3px 0 var(--gold-dk), 0 0 16px rgba(240,193,76,.55); }
@@ -343,13 +305,11 @@ h1{ text-align:center; font-family:var(--font-num); font-size:24px; letter-spaci
   padding:20px 18px; text-align:center; box-shadow:0 5px 0 var(--gold-dk), 0 0 34px rgba(240,193,76,.45);
   animation:popIn .5s cubic-bezier(.34,1.56,.64,1); }
 .gacha-card.s2{ border-color:var(--silver-dk); box-shadow:0 5px 0 #454e57, 0 0 24px rgba(165,180,195,.35); }
-.gacha-card.s3{ border-color:#3f8a50; box-shadow:0 5px 0 #2a5c37, 0 0 28px rgba(107,214,143,.42); }
-.gacha-card.s4{ border-color:var(--purple); box-shadow:0 5px 0 var(--purple-dk), 0 0 40px rgba(168,119,234,.6); }
 .gacha-card .g-ico{ font-size:44px; margin-bottom:6px; filter:drop-shadow(0 3px 5px rgba(0,0,0,.6)); }
 .gacha-card .g-rarity{ font-size:11px; letter-spacing:2px; color:var(--sub); margin-bottom:5px; }
 .gacha-card .g-stars{ font-size:17px; color:var(--gold); letter-spacing:1px; margin-bottom:7px; }
 .gacha-card .g-name{ font-family:var(--font-num); font-size:18px; color:var(--gold); margin-bottom:8px; text-shadow:0 1px 3px rgba(0,0,0,.8); }
-.gacha-card.s2 .g-name{ color:var(--silver); } .gacha-card.s3 .g-name{ color:#9fe0a8; } .gacha-card.s4 .g-name{ color:#d9bcff; }
+.gacha-card.s2 .g-name{ color:var(--silver); }
 .gacha-card .g-desc{ font-size:11px; color:var(--sub); line-height:1.6; }
 .gacha-card .g-owned{ font-size:10px; color:var(--sub); margin-top:9px; letter-spacing:1px; }
 /* 重複所持数に応じた演出（1〜10段階）。box-shadowはUNDERTALE上書きで無効化されるため filter:drop-shadow を使う */
@@ -593,11 +553,7 @@ img{ image-rendering:pixelated; }
 .f-avatar img{ filter:grayscale(1) contrast(1.45) brightness(.98) !important; }
 
 /* ---- 面・枠を全部フラットな白枠へ ---- */
-.panel,.quest,.card,.mini-card,.eq-item,.eq-slot,.gacha-card,.chip,.coin-chip,.rank-chip,
-.round-chip,.ph,.hint,.reward-box,.overlay .box,.toast,.db-stat,.gear-tag,.quirk-tag,
-.top-bar,.bottom-nav,.nav-btn,.log,.hb-cell,.slot,.mini-slot,.rv-slot,.f-avatar,
-.hp-track,.exp-track,.pad button,.gacha-tabs button,.clear-stamp,.esk-inner,.tl-start,
-.phase-bar,.fighter-box,.hb-row,.title-rule,.rules-body,.db-grid,.eq-slots{
+.panel, .quest, .card, .mini-card, .eq-item, .eq-slot, .gacha-card, .chip, .coin-chip, .rank-chip, .round-chip, .ph, .hint, .reward-box, .overlay .box, .toast, .db-stat, .gear-tag, .quirk-tag, .top-bar, .bottom-nav, .nav-btn, .log, .hb-cell, .slot, .mini-slot, .rv-slot, .f-avatar, .hp-track, .exp-track, .pad button, .gacha-tabs button, .esk-inner, .tl-start, .phase-bar, .fighter-box, .hb-row, .title-rule, .rules-body, .db-grid, .eq-slots{
   background-image:none !important; box-shadow:none !important; text-shadow:none !important;
 }
 .panel{ background:#000 !important; border:4px solid #fff !important; padding:14px; }
@@ -621,7 +577,6 @@ button{
   /* クエストとナビは塗りつぶさず、枠と文字を光らせる */
   .quest:hover:not(:disabled){ background:#000 !important; border-color:var(--yel) !important; }
   .quest:hover:not(:disabled) *{ color:inherit !important; }
-  .quest:hover:not(:disabled) .q-name{ color:var(--yel) !important; }
   .nav-btn:hover:not(.active){ background:#000 !important; color:#fff !important; }
   .nav-btn:hover:not(.active) *{ color:#fff !important; }
 }
@@ -633,23 +588,6 @@ button:disabled{ opacity:1 !important; color:#4a4a4a !important; border-color:#4
 
 /* ---- クエスト一覧 ---- */
 .quest{ background:#000 !important; border:3px solid #fff !important; }
-.quest .q-icon{ background:#000 !important; border:3px solid #fff !important; box-shadow:none !important; }
-.quest.locked{ opacity:1; filter:none; border-color:#4a4a4a !important; color:#4a4a4a !important; }
-.quest.locked .q-icon{ border-color:#4a4a4a !important; color:#4a4a4a; }
-.quest.locked .q-name,.quest.locked .q-enemy,.quest.locked .q-tier{ color:#4a4a4a !important; }
-.q-name{ color:#fff !important; } .q-enemy{ color:#9d9d9d !important; }
-.q-quirk{ color:var(--yel) !important; }
-.q-coin{ color:var(--yel) !important; }
-.q-tier .stars{ color:var(--yel) !important; }
-.clear-stamp{ background:#000 !important; border:2px solid var(--yel) !important; color:var(--yel) !important;
-  transform:none !important; width:auto !important; height:auto !important; line-height:1 !important; padding:3px 6px; }
-.t1 .q-icon,.t2 .q-icon,.t3 .q-icon,.t4 .q-icon,.t5 .q-icon,.t6 .q-icon{ background:#000 !important; }
-.t1 .q-tier{ color:#fff !important; }  .t1{ border-color:#fff !important; }
-.t2 .q-tier{ color:#66e0ff !important; } .t2{ border-color:#66e0ff !important; } .t2 .q-icon{ border-color:#66e0ff !important; }
-.t3 .q-tier{ color:#c86bff !important; } .t3{ border-color:#c86bff !important; } .t3 .q-icon{ border-color:#c86bff !important; }
-.t4 .q-tier{ color:#ff9a3c !important; } .t4{ border-color:#ff9a3c !important; } .t4 .q-icon{ border-color:#ff9a3c !important; }
-.t5 .q-tier{ color:#ff3838 !important; } .t5{ border-color:#ff3838 !important; } .t5 .q-icon{ border-color:#ff3838 !important; }
-.t6 .q-tier{ color:var(--yel) !important; } .t6{ border-color:var(--yel) !important; } .t6 .q-icon{ border-color:var(--yel) !important; }
 
 /* ---- バトル画面 ---- */
 .battle-stage-name{ color:#9d9d9d !important; }
@@ -708,19 +646,13 @@ button:disabled{ opacity:1 !important; color:#4a4a4a !important; border-color:#4
 .card .c-name,.card .c-nm,.mc-name,.ei-nm,.g-name{ color:#fff !important; text-shadow:none !important; }
 .card .c-desc,.ei-ef,.g-desc,.mc-bc,.db-sub{ color:#9d9d9d !important; }
 .card .c-cost,.mc-sp{ background:#000 !important; border:2px solid var(--yel) !important; color:var(--yel) !important; box-shadow:none !important; }
-.card .c-head,.r2 .c-head,.r3 .c-head,.r4 .c-head,.r5 .c-head,.mc-top{ background:#000 !important; background-image:none !important; }
-.card .c-stars,.g-stars,.ei-st,.r5 .c-stars{ color:var(--yel) !important; text-shadow:none !important; }
-.card.r3{ border-color:#66e0ff !important; } .card.r4{ border-color:#ff9a3c !important; }
-.card.r5{ border-color:#ff5cf0 !important; }
+.card .c-head, .mc-top{ background:#000 !important; background-image:none !important; }
+.card .c-stars, .g-stars, .ei-st{ color:var(--yel) !important; text-shadow:none !important; }
 .card.selected{ border-color:var(--yel) !important; background:#1a1500 !important; }
 .card.pulse{ animation:pxBlink .5s steps(2,end) 3 !important; }
 .mini-card.dim{ opacity:.35; }
-.mini-card.m2{ border-color:#fff !important; } .mini-card.m3{ border-color:#66e0ff !important; }
-.mini-card.m4{ border-color:#ff9a3c !important; } .mini-card.m5{ border-color:#ff5cf0 !important; }
-.gacha-card.s2{ border-color:#fff !important; } .gacha-card.s3{ border-color:#66e0ff !important; }
-.gacha-card.s4{ border-color:#ff9a3c !important; }
+.gacha-card.s2{ border-color:#fff !important; }
 .g-rarity{ color:var(--yel) !important; }
-.eq-item.e3{ border-color:#66e0ff !important; } .eq-item.e5{ border-color:#ff5cf0 !important; }
 .eq-item.on{ border-color:var(--yel) !important; background:#1a1500 !important; }
 .eq-slot.filled{ border-color:var(--yel) !important; }
 .es-empty{ color:#4a4a4a !important; }
@@ -728,7 +660,6 @@ button:disabled{ opacity:1 !important; color:#4a4a4a !important; border-color:#4
 
 /* ログ・チップ・ヒント */
 .log{ background:#000 !important; border:2px solid #4a4a4a !important; color:#9d9d9d !important; }
-.log .e-you{ color:#fff !important; }
 .chip,.coin-chip,.rank-chip,.hint,.db-stat,.reward-box{ background:#000 !important; border:2px solid #fff !important; color:#fff !important; }
 .db-stat.over b{ color:#ff3838 !important; }
 .hb-cell{ background:#000 !important; border:2px solid #4a4a4a !important; }
@@ -855,7 +786,6 @@ button:disabled{ opacity:1 !important; color:#4a4a4a !important; border-color:#4
 @keyframes pxQuake{ 0%,100%{ transform:translate(0,0);} 15%{ transform:translate(-5px,3px);} 30%{ transform:translate(5px,-3px);}
   45%{ transform:translate(-4px,-3px);} 60%{ transform:translate(4px,3px);} 75%{ transform:translate(-2px,1px);} }
 
-
 /* =========================================================
    ★ 追加分：上部バナー演出 / 推理の記録 / 冒険 / カード選択
    ========================================================= */
@@ -920,6 +850,23 @@ button:disabled{ opacity:1 !important; color:#4a4a4a !important; border-color:#4
 .dead-note b{ font-family:var(--font-num); color:#5a5a5a; font-size:12px; letter-spacing:2px; }
 
 /* --- 冒険画面 --- */
+body.focus-mode{ padding-bottom:20px; }
+body.focus-mode .bt-row1{ padding-right:50px; }   /* 右上の☰ボタンと重ならないように */
+.esc-btn{
+  position:fixed; top:8px; right:8px; z-index:60;
+  width:44px; height:44px; padding:0; font-size:20px; line-height:1;
+  display:flex; align-items:center; justify-content:center; cursor:pointer;
+}
+.esc-title{ font-family:var(--font-num); font-size:14px; text-align:center; margin-bottom:12px; }
+.esc-note{ font-size:10.5px; color:var(--sub); text-align:center; margin-top:10px; line-height:1.7; }
+.lead-fold{ margin-bottom:12px; }
+.lead-fold > summary{
+  cursor:pointer; list-style:none; font-size:12px; color:var(--sub);
+  padding:9px 12px; border:2px solid var(--bronze); display:block; text-align:center;
+}
+.lead-fold > summary::-webkit-details-marker{ display:none; }
+.lead-fold > summary:hover{ color:var(--text); }
+.lead-fold[open] > summary{ margin-bottom:10px; }
 .run-lead{ font-size:11.5px; color:#9d9d9d; line-height:1.85; margin-bottom:12px; }
 .run-lead b{ color:var(--yel); }
 .run-stat{ display:flex; gap:8px; margin-bottom:12px; }
@@ -946,7 +893,6 @@ button:disabled{ opacity:1 !important; color:#4a4a4a !important; border-color:#4
 #draftOverlay .box{ max-width:400px; width:94%; }
 #draftCards{ display:flex; flex-direction:column; gap:9px; margin-top:10px; }
 .draft-card{ border:3px solid #fff; background:#000; text-align:left; }
-.draft-card.r3{ border-color:#66e0ff; } .draft-card.r4{ border-color:#ff9a3c; } .draft-card.r5{ border-color:#ff5cf0; }
 .draft-card .dc-top{ display:flex; align-items:center; gap:8px; padding:8px 10px; border-bottom:2px solid #333; }
 .draft-card .dc-ico{ font-size:22px; filter:grayscale(1) brightness(1.45) contrast(1.25); }
 .draft-card .dc-name{ font-size:13px; color:#fff; }
@@ -956,7 +902,6 @@ button:disabled{ opacity:1 !important; color:#4a4a4a !important; border-color:#4
 .draft-card .dc-desc{ font-size:10.5px; color:#9d9d9d; padding:8px 10px; line-height:1.7; }
 .draft-card .dc-btn{ padding:0 10px 10px; }
 .draft-card .dc-btn button{ width:100%; }
-
 
 /* --- 追加調整 --- */
 /* トーストは下側へ（上部のスキル演出と重ならないように） */
@@ -974,7 +919,6 @@ button:disabled{ opacity:1 !important; color:#4a4a4a !important; border-color:#4
 /* 使えない数字の一覧を読みやすく */
 .dead-note b{ color:#ff8a8a !important; }
 
-
 /* 「完全一致！」の演出もドット風に。結果画面より下に置く */
 #fxLayer{ z-index:88 !important; }
 .finish-fx{ background:#000 !important; background-image:none !important;
@@ -983,7 +927,6 @@ button:disabled{ opacity:1 !important; color:#4a4a4a !important; border-color:#4
   text-shadow:4px 4px 0 #000, -4px -4px 0 #000 !important;
   animation:pxSlam .5s steps(5,end) both, pxBigBlink .22s steps(2,end) 5 .5s !important; }
 @keyframes pxFinish{ 0%{opacity:0;} 8%{opacity:1;} 78%{opacity:1;} 100%{opacity:0;} }
-
 
 /* =========================================================
    ★ 対戦画面：上部固定バー / ポップアップ
@@ -1027,7 +970,6 @@ button.mini{ padding:6px 9px !important; font-size:10px !important; border-width
 .hand-row{ gap:8px !important; }
 .r-row.sub{ font-size:10px; opacity:.75; }
 
-
 /* --- 対戦画面をさらに詰めて、スクロールなしで操作できるように --- */
 .bt-name{ width:64px !important; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 #battleScreen .f-avatar{ width:46px !important; height:46px !important; font-size:23px !important; border-width:2px !important; }
@@ -1049,7 +991,6 @@ button.mini{ padding:6px 9px !important; font-size:10px !important; border-width
 #battleScreen .card .c-name{ font-size:12px !important; }
 #battleScreen .actions{ margin-top:8px !important; }
 
-
 /* --- 敵/自分の欄を横並びにしてさらに詰める --- */
 #battleScreen .fighter-box{ display:grid; grid-template-columns:46px 1fr; column-gap:9px; row-gap:2px; align-items:center; }
 #battleScreen .fighter-head{ display:contents; }
@@ -1064,18 +1005,8 @@ button.mini{ padding:6px 9px !important; font-size:10px !important; border-width
 #battleScreen .card button{ padding:8px 10px !important; font-size:11.5px !important; }
 #battleScreen .c-head{ padding:5px 8px !important; }
 #battleScreen .card .c-ico{ font-size:16px !important; }
-
-
-/* ★6（必殺技）の見た目 */
-.card.r6{ border-color:#ff5cf0 !important; box-shadow:0 0 0 2px rgba(255,92,240,.35) inset !important; }
-.card.r6 .c-stars,.mini-card.m6 .mc-name,.gacha-card.s6 .g-name{ color:#ff5cf0 !important; }
-.mini-card.m6{ border-color:#ff5cf0 !important; }
-.gacha-card.s6{ border-color:#ff5cf0 !important; }
-.draft-card.r6{ border-color:#ff5cf0 !important; }
 .draft-card.relic{ border-color:var(--yel) !important; }
 .draft-card.relic .dc-stars{ color:var(--yel) !important; }
-.draft-card.r6 .dc-stars{ color:#ff5cf0 !important; }
-
 
 /* --- スキル温存でスキルポイントを得たときの大きな表示 --- */
 #spGainFx{
@@ -1180,6 +1111,18 @@ button.mini{ padding:6px 9px !important; font-size:10px !important; border-width
 <body>
 
 <div id="toastLayer"></div>
+
+<!-- 冒険・対戦中だけ出る右上メニュー -->
+<button class="esc-btn hidden" id="escBtn" aria-label="メニュー">☰</button>
+<div class="overlay hidden" id="escMenu">
+  <div class="box">
+    <div class="esc-title">メニュー</div>
+    <div class="actions"><button class="gold" id="escResume">▶ 続ける</button></div>
+    <div class="actions"><button class="secondary" id="escRules">📖 遊び方をみる</button></div>
+    <div class="actions"><button class="secondary" id="escHome">🏠 最初の画面に戻る</button></div>
+    <div class="esc-note" id="escNote"></div>
+  </div>
+</div>
 <div id="fxLayer" class="hidden"></div>
 <div id="enemySkillFx" class="hidden"></div>
 <div id="revealFx" class="hidden"></div>
@@ -2202,10 +2145,14 @@ const SCREENS = { home:"homeScreen", quest:"questScreen", setup:"setupScreen", b
                   relic:"relicScreen" };
 function showScreen(name){
   Object.keys(SCREENS).forEach(k=> document.getElementById(SCREENS[k]).classList.toggle("hidden", k!==name));
-  const inBattle = (name==="battle");
-  document.getElementById("topBar").classList.toggle("hidden", inBattle);
-  document.getElementById("chrome").classList.toggle("hidden", inBattle);
-  document.getElementById("bottomNav").classList.toggle("hidden", inBattle);
+  // 冒険・対戦の最中（数字決め〜戦闘）は下のメニューを消して、操作の邪魔をしないようにする
+  const focus = (name==="battle" || name==="setup" || name==="relic");
+  document.getElementById("topBar").classList.toggle("hidden", focus);
+  document.getElementById("chrome").classList.toggle("hidden", focus);
+  document.getElementById("bottomNav").classList.toggle("hidden", focus);
+  document.getElementById("escBtn").classList.toggle("hidden", !focus);
+  document.getElementById("escMenu").classList.add("hidden");
+  document.body.classList.toggle("focus-mode", focus);
   document.querySelectorAll(".nav-btn").forEach(b=> b.classList.toggle("active", b.dataset.nav===name));
   window.scrollTo(0,0);
 }
@@ -2237,6 +2184,54 @@ function toast(text, kind){
   requestAnimationFrame(()=> el.classList.add("show"));
   setTimeout(()=>{ el.classList.remove("show"); setTimeout(()=> el.remove(), 300); }, 1600);
 }
+/* ===== 冒険・対戦中の右上メニュー ===== */
+function escOnBattle(){ return !document.getElementById("battleScreen").classList.contains("hidden"); }
+function openEscMenu(){
+  const note = document.getElementById("escNote");
+  if(escOnBattle()){
+    note.textContent = (B && B.versus)
+      ? "※ 戻ると、この対戦は中断されます。"
+      : "※ 戻ると冒険は終わりです。集めたパッシブは消え、カード報酬ももらえません。";
+  } else {
+    note.textContent = "※ まだ戦っていないので、戻っても失うものはありません。";
+  }
+  document.getElementById("escMenu").classList.remove("hidden");
+}
+function closeEscMenu(){ document.getElementById("escMenu").classList.add("hidden"); }
+function escGoHome(){
+  if(escOnBattle()){
+    const vs = !!(B && B.versus);
+    const msg = vs ? "対戦を中断して、最初の画面に戻りますか？"
+                   : "冒険をやめて、最初の画面に戻りますか？\n集めたパッシブは消え、カード報酬ももらえません。";
+    if(!confirm(msg)) return;
+    if(B){ B.over = true; B.setOver = true; }   // 進行中の処理を止める
+    if(!vs && runActive()) endRun();
+  }
+  closeEscMenu();
+  renderHome();
+  showScreen("home");
+}
+document.getElementById("escBtn").addEventListener("click", openEscMenu);
+document.getElementById("escResume").addEventListener("click", closeEscMenu);
+document.getElementById("escHome").addEventListener("click", escGoHome);
+document.getElementById("escRules").addEventListener("click", ()=>{
+  closeEscMenu();
+  if(escOnBattle() && !confirm("遊び方を見ると、この戦いは中断されます。よろしいですか？")) return;
+  escGoHome_toRules();
+});
+function escGoHome_toRules(){
+  if(escOnBattle()){
+    if(B){ B.over = true; B.setOver = true; }
+    if(!(B && B.versus) && runActive()) endRun();
+  }
+  renderHome(); showScreen("home");
+  const h = document.querySelectorAll("#homeScreen .sect")[1];
+  if(h) h.scrollIntoView({ behavior:"smooth", block:"start" });
+}
+document.getElementById("escMenu").addEventListener("click", (e)=>{
+  if(e.target.id === "escMenu") closeEscMenu();   // 外側をタップで閉じる
+});
+
 document.querySelectorAll(".nav-btn").forEach(btn=>{
   btn.addEventListener("click", ()=>{
     const n = btn.dataset.nav;
@@ -2376,6 +2371,7 @@ function renderQuests(){
       </div>`;
     }).join("");
     w.innerHTML = `
+      <details class="lead-fold"><summary>▸ 冒険のルールをみる</summary>
       <div class="run-lead">
         ・ダンジョンを選び、<b>いちばん奥の敵まで連勝</b>を目指します。<br>
         ・1体につき<b>1ラウンド勝負</b>。勝てばすぐ次の敵に進みます。<br>
@@ -2388,6 +2384,7 @@ function renderQuests(){
         ・HPは戦いをまたいで持ち越し。勝つたびに最大HPの<b>65%</b>回復します（回復後は必ず60%以上になります）。<br>
         ・<b>負けたら冒険は終わり</b>。カードはもらえません。
       </div>
+      </details>
       <div class="run-stat">
         <div>デッキ<b>${deckNum}枚</b></div>
         <div>最大HP<b>${playerMaxHp()}</b></div>
@@ -2499,6 +2496,7 @@ function renderVersus(){
   const deckNum = CARD_ORDER.reduce((a,k)=> a+(save.deck[k]||0),0);
   const vsL = normalizeLoadoutVs();
   w.innerHTML = `
+    <details class="lead-fold"><summary>▸ 対人戦のルールをみる</summary>
     <div class="run-lead">
       ・同じ端末で<b>2人で交代しながら</b>遊ぶモードです。<br>
       ・<b>1ラウンド最大5ターン、3ラウンド2本先取</b>で勝ちです。<br>
@@ -2507,6 +2505,7 @@ function renderVersus(){
       ・冒険で手に入れた<b>パッシブを${VS_RELIC_SLOTS}個まで</b>持ち込めます。<br>
       ・対戦の開始に<b>スタミナ${VERSUS_STAMINA_COST}</b>を消費します（所持 ${save.stamina}）。
     </div>
+    </details>
     <div class="run-stat">
       <div>デッキ<b>${deckNum}枚</b></div>
       <div>最大HP<b>${playerMaxHp()}</b></div>

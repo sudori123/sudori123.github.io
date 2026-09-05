@@ -1187,8 +1187,8 @@ button.mini{ padding:6px 9px !important; font-size:10px !important; border-width
         ・スキルポイントの残り2につき <b>+1</b>（装備でさらに増えます）<br>
         <br>
         <b>■ スキルポイント（SP）と墓地</b><br>
-        ・SPは<b>毎ターン1</b>だけ増えます（上限12／パッシブ「器の拡張」で18）。強いカードほど貯めないと使えません。<br>
-        ・<b>スキルを1つも使わずに予想へ進んだターンは、SPが+1・HPが5回復</b>します。つまり温存したターンは<b>SPが2</b>たまります。<br>
+        ・SPは<b>毎ターン2</b>増えます（上限12／パッシブ「器の拡張」で18）。強いカードほど貯めないと使えません。<br>
+        ・<b>スキルを1つも使わずに予想へ進んだターンは、SPが+1・HPが5回復</b>します。つまり温存したターンは<b>SPが3</b>たまります。<br>
         ・強いカードほどコストが高いので、<b>何ターン温存して必殺技をねらうか</b>がこのゲームの読み合いです。<br>
         ・開幕に敵の数字を見せてくれる装備は、<b>1戦の最初のラウンドだけ</b>働きます。<br>
         ・使ったカードと引き直したカードは、その対戦が終わるまで<b>墓地</b>に置かれます。<br>
@@ -1568,7 +1568,7 @@ button.mini{ padding:6px 9px !important; font-size:10px !important; border-width
 /* =========================================================
    1. 定数・データ
    ========================================================= */
-const LEN = 3, HAND_SIZE = 5, POINT_INCOME = 1, POINT_CAP = 12;
+const LEN = 3, HAND_SIZE = 5, POINT_INCOME = 2, POINT_CAP = 12;
 const EXCHANGE_COST = 2, DECK_SIZE = 15;
 const ULT_SLOT = 1;   // 必殺技（★6）はコストを無視して1枚だけ入る専用枠
 const MAX_TURNS = 5;          // 1ラウンドの最大ターン数
@@ -1683,7 +1683,7 @@ const CARDS = {
   /* --- デッキ購入（DECK_PACKS）でしか手に入らない専用カード。ガチャにもダンジョン報酬にも出ない --- */
   blessing:   { key:"blessing",   name:"聖なる守り", ico:"✨", cost:6, star:5, bc: 9, max:1, src:"pack",
                 desc:"HPを50回復し、次に受けるダメージを70%軽減する。" },
-  annihilate: { key:"annihilate", name:"滅びの一撃", ico:"💀", cost:7, star:5, bc:10, max:1, src:"pack",
+  annihilate: { key:"annihilate", name:"滅びの一撃", ico:"💀", cost:5, star:5, bc:10, max:1, src:"pack",
                 desc:"推理とは関係なく敵に35ダメージを与える。" },
   omniscience:{ key:"omniscience",name:"透徹の目",   ico:"🌐", cost:6, star:5, bc: 9, max:1, src:"pack",
                 desc:"敵の数字を2つ、一気に透視する。さらに次に使うカードのコストが2下がる。" },
@@ -1774,24 +1774,24 @@ const ESKILLS = {
 // クエスト
 const STAGES = [
   { id:"q1", quirk:"allDiff", tier:"初級", t:1, stars:1, name:"はじまりの練習場", enemy:"スライム先生", icon:"🟢",
-    hp:60,  ai:0.30, gear:null, skills:[], coin:35, exp:12, firstCoin:120 },
+    hp:75,  ai:0.40, gear:null, skills:[], coin:35, exp:12, firstCoin:120 },
   { id:"q2", quirk:"echo", tier:"初級", t:1, stars:2, name:"数字の洞窟", enemy:"コウモリ算士", icon:"🦇",
-    hp:80,  ai:0.50, gear:{name:"夜目のゴーグル", ico:"🥽", text:"与ダメージ+10%", eff:{dmgUp:0.10}},
+    hp:100,  ai:0.60, gear:{name:"夜目のゴーグル", ico:"🥽", text:"与ダメージ+10%", eff:{dmgUp:0.10}},
     skills:[{k:"screech", p:0.35}], coin:50, exp:18, firstCoin:180 },
   { id:"q3", quirk:"allEven", tier:"中級", t:2, stars:3, name:"惑わしの霧森", enemy:"霧の魔女", icon:"🧙",
-    hp:100, ai:0.65, gear:{name:"魔女の帽子", ico:"🎩", text:"毎ラウンドHP+4", eff:{regen:4}},
+    hp:125, ai:0.75, gear:{name:"魔女の帽子", ico:"🎩", text:"毎ラウンドHP+4", eff:{regen:4}},
     skills:[{k:"mist", p:0.40},{k:"daze", p:0.30}], coin:70, exp:26, firstCard:"heal" },
   { id:"q4", quirk:"mirror", tier:"上級", t:3, stars:4, name:"鋼鉄の砦", enemy:"鉄壁ゴーレム", icon:"🗿",
-    hp:130, ai:0.75, gear:{name:"鋼鉄の甲殻", ico:"⚙️", text:"受けるダメージ-20%", eff:{dmgCut:0.20}},
+    hp:162, ai:0.85, gear:{name:"鋼鉄の甲殻", ico:"⚙️", text:"受けるダメージ-20%", eff:{dmgCut:0.20}},
     skills:[{k:"harden", p:0.50}], coin:95, exp:36, firstCard:"guard" },
   { id:"q5", quirk:"stair", tier:"極", t:4, stars:5, name:"氷結の神殿", enemy:"氷竜アイシクル", icon:"🐉",
-    hp:160, ai:0.88, gear:{name:"氷の鱗", ico:"🧊", text:"受けるダメージ-15%／与ダメージ+10%", eff:{dmgCut:0.15, dmgUp:0.10}},
+    hp:200, ai:0.95, gear:{name:"氷の鱗", ico:"🧊", text:"受けるダメージ-15%／与ダメージ+10%", eff:{dmgCut:0.15, dmgUp:0.10}},
     skills:[{k:"breath", p:0.35},{k:"chill", p:0.30}], coin:130, exp:50, firstCard:"power" },
   { id:"q6", quirk:"shuffleKing", tier:"超絶", t:5, stars:6, name:"深淵の玉座", enemy:"終焉算王", icon:"👑",
-    hp:200, ai:1.00, gear:{name:"王冠", ico:"👑", text:"与ダメージ+20%", eff:{dmgUp:0.20}},
+    hp:250, ai:0.95, gear:{name:"王冠", ico:"👑", text:"与ダメージ+20%", eff:{dmgUp:0.20}},
     skills:[{k:"regen", p:0.35},{k:"rule", p:0.35}], coin:190, exp:70, firstCard:"twin" },
   { id:"q7", quirk:"drift", tier:"神級", t:6, stars:6, name:"天空の試練場", enemy:"創世の観測者", icon:"🌌",
-    hp:250, ai:1.00, gear:{name:"創世の環", ico:"🌀", text:"受けるダメージ-20%／毎ラウンドHP+6", eff:{dmgCut:0.20, regen:6}},
+    hp:312, ai:0.95, gear:{name:"創世の環", ico:"🌀", text:"受けるダメージ-20%／毎ラウンドHP+6", eff:{dmgCut:0.20, regen:6}},
     skills:[{k:"observe", p:0.40},{k:"collapse", p:0.35},{k:"rewind", p:0.25}], coin:280, exp:100, firstCard:"full" },
 ];
 
@@ -3708,6 +3708,7 @@ document.getElementById("btnExchangeOk").addEventListener("click",()=>{
 });
 document.getElementById("btnToGuess").addEventListener("click",()=>{
   if(B.busy) return;
+  if(document.getElementById("skillPanel").classList.contains("hidden")) return;   // スキル画面以外では反応しない（温存ボーナスの二重取り防止）
   if(B.exchangeMode){ toast("引き直しを確定するかキャンセルしてください","plain"); return; }
   if(B.spentThisTurn===0){
     B.idleTurns++;

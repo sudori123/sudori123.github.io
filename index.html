@@ -4,101 +4,198 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Crect width=%2716%27 height=%2716%27 fill=%27%23000%27/%3E%3Cg fill=%27%23ffe100%27%3E%3Crect x=%277%27 y=%270%27 width=%272%27 height=%272%27/%3E%3Crect x=%274%27 y=%272%27 width=%278%27 height=%271%27/%3E%3Crect x=%273%27 y=%273%27 width=%2710%27 height=%2710%27/%3E%3Crect x=%274%27 y=%2713%27 width=%278%27 height=%271%27/%3E%3C/g%3E%3Crect x=%274%27 y=%276%27 width=%278%27 height=%273%27 fill=%27%23000%27/%3E%3Cg fill=%27%23ffe100%27%3E%3Crect x=%275%27 y=%277%27 width=%272%27 height=%271%27/%3E%3Crect x=%279%27 y=%277%27 width=%272%27 height=%271%27/%3E%3C/g%3E%3C/svg%3E">
-<title>見抜き算</title>
-<meta name="description" content="3桁の数字を推理して戦う、デッキ構築ダンジョンRPG「見抜き算」。ブラウザですぐに遊べます。">
+<title>すどりのひとりゲーム工房</title>
+<meta name="description" content="ひとりでゲームを作っています。3桁の数字を推理して戦うデッキ構築ダンジョンRPG「見抜き算」を公開中。ぜんぶブラウザで、無料で遊べます。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="すどりのひとりゲーム工房">
+<meta property="og:description" content="ひとりでゲームを作っています。ぜんぶブラウザで、無料で遊べます。">
+<meta property="og:url" content="https://sudori123.github.io/">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#000; --ink:#fff; --dim:#9d9d9d; --faint:#4a4a4a; --yel:#ffe100;
-  --body:'DotGothic16','Hiragino Kaku Gothic ProN','Yu Gothic',monospace;
-  --disp:'Press Start 2P','DotGothic16',monospace;
+  --paper:#faf7f2; --card:#fff; --ink:#1c1a17; --sub:#5c574f;
+  --mute:#9a938a; --line:#e6e0d6; --line2:#ded7cb; --tint:#f2ede4;
+  --accent:#3f52a0; --accent-dk:#2e3d7a; --night:#14120f; --yel:#ffe100;
+  --mincho:'Zen Old Mincho','Hiragino Mincho ProN',serif;
+  --gothic:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;
+}
+@supports (color: oklch(0.45 0.11 265)){
+  :root{ --accent:oklch(0.45 0.11 265); --accent-dk:oklch(0.35 0.11 265); }
 }
 *{ box-sizing:border-box; }
-html{ background:var(--bg); }
+html{ background:var(--paper); }
 body{
-  margin:0; min-height:100vh; background:var(--bg); color:var(--ink);
-  font-family:var(--body); line-height:1.9;
-  display:flex; align-items:center; justify-content:center; padding:32px 20px 64px;
-  -webkit-font-smoothing:none;
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--gothic); line-height:1.95;
+  -webkit-text-size-adjust:100%;
 }
-body::before{
-  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
-  background-image:repeating-linear-gradient(0deg, rgba(255,255,255,.045) 0 1px, transparent 1px 3px);
-}
-.wrap{ position:relative; z-index:1; width:100%; max-width:520px; text-align:center; }
+a{ color:var(--accent); }
+a:hover{ color:var(--accent-dk); }
 
-.emblem{
-  width:92px; height:92px; margin:0 auto 22px; border:4px solid var(--ink);
-  display:flex; align-items:center; justify-content:center;
-}
-.emblem svg{ width:76%; height:76%; display:block; color:var(--yel); }
-h1{
-  font-family:var(--disp); font-size:clamp(22px,6.4vw,30px); line-height:1.5;
-  margin:0 0 6px; letter-spacing:.02em;
-}
-.en{ font-family:var(--disp); font-size:10px; letter-spacing:.34em; color:var(--dim); margin:0 0 26px; }
-.lead{ font-size:14px; color:var(--dim); margin:0 auto 30px; max-width:26ch; text-align:left; }
-.lead b{ color:var(--ink); }
+.site{ max-width:1040px; margin:0 auto; padding:52px 26px 46px; }
+.layout{ display:flex; flex-direction:column; gap:52px; }
+.layout > aside, .layout > main{ display:contents; }
 
+.hero{ display:flex; flex-direction:column; gap:18px; order:1; }
+.roman{ font-size:10.5px; letter-spacing:.42em; color:var(--accent); }
+.name{ font-family:var(--mincho); font-size:26px; font-weight:700; line-height:1.7; letter-spacing:.02em; margin:0; }
+.rule{ width:44px; height:2px; background:var(--accent); }
+.lead{ font-size:13.5px; color:var(--sub); text-wrap:pretty; margin:0; }
+
+.sec-label{ font-family:var(--mincho); font-size:11px; letter-spacing:.34em; color:var(--mute); }
+
+.works{ display:flex; flex-direction:column; gap:22px; order:2; }
+.work{ background:var(--card); border:1px solid var(--line); display:flex; flex-direction:column; }
+.work-visual{ background:var(--night); display:flex; align-items:center; justify-content:center; height:156px; flex:0 0 auto; }
+.work-visual svg{ width:68px; height:68px; display:block; color:var(--yel); }
+.work-body{ padding:24px 22px 26px; display:flex; flex-direction:column; gap:16px; }
+.work-title{ font-family:var(--mincho); font-size:23px; font-weight:700; line-height:1.5; margin:0; }
+.work-meta{ font-size:10.5px; letter-spacing:.3em; color:var(--mute); }
+.catch{ font-family:var(--mincho); font-size:18px; font-weight:700; line-height:1.8; color:var(--accent); text-wrap:pretty; margin:0; }
+.desc{ font-size:13.5px; color:var(--sub); text-wrap:pretty; margin:0; }
+.tags{ display:flex; flex-wrap:wrap; gap:7px; }
+.tags span{ border:1px solid var(--line2); padding:3px 10px; font-size:11px; color:#7a746b; }
 .play{
-  display:inline-block; font-family:var(--body); font-size:17px; text-decoration:none;
-  color:var(--yel); background:var(--bg); border:4px solid var(--yel);
-  padding:16px 40px; margin-bottom:14px;
+  display:block; text-align:center; background:var(--accent); color:#fff;
+  text-decoration:none; padding:15px 0; font-size:15px; letter-spacing:.06em; min-height:44px;
 }
-.play:hover, .play:focus-visible{ background:var(--yel); color:#000; outline:none; }
-.play:focus-visible{ box-shadow:0 0 0 3px var(--ink); }
-.sub{ font-size:11.5px; color:var(--dim); margin:0 0 40px; }
+.play:hover, .play:focus-visible{ background:var(--accent-dk); color:#fff; outline:none; }
+.play:focus-visible{ box-shadow:0 0 0 3px var(--line2); }
+.note{ font-size:11.5px; color:var(--mute); text-align:center; }
+.soon{ border:1px dashed var(--line2); padding:26px 22px; display:flex; flex-direction:column; gap:5px; }
+.soon b{ font-family:var(--mincho); font-size:15px; font-weight:400; color:var(--mute); }
+.soon span{ font-size:12.5px; color:var(--mute); }
 
-.spec{
-  border:3px solid var(--faint); padding:16px 18px; text-align:left;
-  display:flex; flex-direction:column; gap:9px; margin-bottom:30px;
+.about{ display:flex; flex-direction:column; gap:16px; order:3; }
+.about p{ font-size:13.5px; color:var(--sub); text-wrap:pretty; margin:0 0 1em; }
+.about p:last-child{ margin-bottom:0; }
+
+.news{ display:flex; flex-direction:column; gap:16px; order:4; }
+.news ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; }
+.news li{ display:flex; gap:16px; }
+.news time{ flex:0 0 68px; font-size:12px; color:var(--mute); }
+.news span{ font-size:13.5px; }
+
+.voice{ background:var(--tint); padding:26px 22px; display:flex; flex-direction:column; gap:13px; align-items:flex-start; order:5; }
+.voice h2{ font-family:var(--mincho); font-size:17px; font-weight:700; margin:0; }
+.voice p{ font-size:13px; color:var(--sub); text-wrap:pretty; margin:0; max-width:46ch; }
+.voice a{
+  display:inline-block; border:1px solid var(--accent); color:var(--accent);
+  text-decoration:none; padding:11px 24px; font-size:13.5px; min-height:44px;
 }
-.spec div{ display:flex; gap:12px; font-size:12.5px; color:var(--dim); }
-.spec dt{ color:var(--dim); flex:0 0 88px; }
-.spec dd{ margin:0; color:var(--ink); }
+.voice a:hover, .voice a:focus-visible{ background:var(--accent); color:#fff; outline:none; }
 
-footer{ font-size:11.5px; color:var(--dim); line-height:2; }
+.foot{ border-top:1px solid var(--line); padding-top:22px; display:flex; flex-direction:column; gap:10px; font-size:11.5px; color:var(--mute); order:6; }
+.foot nav{ display:flex; gap:20px; }
+.foot a{ text-decoration:none; }
+
+@media (min-width:900px){
+  .site{ padding:74px 40px 56px; }
+  .layout{ display:grid; grid-template-columns:296px 1fr; gap:76px; align-items:start; }
+  .layout > aside{ display:flex; flex-direction:column; gap:34px; }
+  .layout > main{ display:flex; flex-direction:column; gap:56px; }
+  .name{ font-size:28px; }
+  .work{ flex-direction:row; align-items:stretch; }
+  .work-visual{ flex:0 0 204px; height:auto; }
+  .work-visual svg{ width:76px; height:76px; }
+  .work-body{ flex-grow:1; padding:30px 32px 32px; gap:15px; }
+  .work-title{ font-size:25px; }
+  .catch{ font-size:17.5px; line-height:1.7; }
+  .cta{ display:flex; align-items:center; gap:18px; padding-top:3px; }
+  .cta .play{ display:inline-block; padding:14px 36px; white-space:nowrap; }
+  .cta .note{ text-align:left; white-space:nowrap; }
+  .soon{ padding:30px 32px; }
+  .news time{ flex-basis:72px; }
+  .voice{ padding:30px 32px; }
+  .voice h2{ font-size:18px; }
+  .foot{ padding-top:20px; gap:9px; }
+  .foot nav{ flex-direction:column; gap:9px; }
+}
 @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="site">
+<div class="layout">
 
-  <div class="emblem">
-    <svg viewBox="0 0 16 16" shape-rendering="crispEdges" role="img" aria-label="見抜き算のキャラクター">
-      <g fill="currentColor">
-        <rect x="7" y="0" width="2" height="2"/>
-        <rect x="4" y="2" width="8" height="1"/>
-        <rect x="3" y="3" width="10" height="10"/>
-        <rect x="4" y="13" width="8" height="1"/>
-      </g>
-      <rect x="4" y="6" width="8" height="3" fill="#000"/>
-      <g fill="currentColor">
-        <rect x="5" y="7" width="2" height="1"/>
-        <rect x="9" y="7" width="2" height="1"/>
-      </g>
-    </svg>
-  </div>
-  <h1>見抜き算</h1>
-  <p class="en">MINUKIZAN</p>
+  <aside>
+    <header class="hero">
+      <div class="roman">SUDORI123</div>
+      <h1 class="name">すどりの<br>ひとりゲーム工房</h1>
+      <div class="rule"></div>
+      <p class="lead">ひとりでゲームを作っています。ぜんぶブラウザで、無料で遊べます。</p>
+    </header>
 
-  <p class="lead">敵が隠した<b>3桁の数字</b>を推理して戦う、デッキ構築ダンジョンRPG。インストール不要、ブラウザですぐ遊べます。</p>
+    <section class="about">
+      <h2 class="sec-label">つくっている人</h2>
+      <div>
+        <p>はじめまして、すどりと申します。</p>
+        <p>自分が遊びたいと思えるゲームを、ただ作ってみたかった。始まりはそれだけでした。</p>
+        <p>企画から絵、プログラムまで、手さぐりでひとりで作っています。うまくできない日もありますが、少しの時間でも楽しんでいただけたら、それがいちばんうれしいです。</p>
+      </div>
+    </section>
 
-  <a class="play" href="./minukizan/">▶ ゲームを遊ぶ</a>
-  <p class="sub">スマートフォン・パソコン対応／無料</p>
+    <footer class="foot">
+      <nav>
+        <a href="./privacy.html">プライバシーポリシー</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfWrt67Qmmsd6UewgJ0VvAefBhn-aMHtwrBl4eM3xWR0xP9qA/viewform" target="_blank" rel="noopener">お問い合わせ</a>
+      </nav>
+      <div>&copy; 2026 すどりのひとりゲーム工房</div>
+    </footer>
+  </aside>
 
-  <div class="spec">
-    <div><dt>ジャンル</dt><dd>数字推理 × デッキ構築 × ダンジョン探索</dd></div>
-    <div><dt>あそび方</dt><dd>ヒットとブローを手がかりに数字を絞り込む</dd></div>
-    <div><dt>プレイ人数</dt><dd>1人（冒険）／2人（同じ端末で対戦）</dd></div>
-  </div>
+  <main>
+    <section class="works">
+      <h2 class="sec-label">作品</h2>
 
-  <footer>
-    <p>このサイトは準備中です。<br>今後、他の作品やお知らせを追加していく予定です。</p>
-  </footer>
+      <article class="work">
+        <div class="work-visual">
+          <svg viewBox="0 0 16 16" shape-rendering="crispEdges" role="img" aria-label="見抜き算のキャラクター">
+            <g fill="currentColor"><rect x="7" y="0" width="2" height="2"/><rect x="4" y="2" width="8" height="1"/><rect x="3" y="3" width="10" height="10"/><rect x="4" y="13" width="8" height="1"/></g>
+            <rect x="4" y="6" width="8" height="3" fill="#14120f"/>
+            <g fill="currentColor"><rect x="5" y="7" width="2" height="1"/><rect x="9" y="7" width="2" height="1"/></g>
+          </svg>
+        </div>
+        <div class="work-body">
+          <div>
+            <h3 class="work-title">見抜き算</h3>
+            <div class="work-meta">MINUKIZAN ／ 2026</div>
+          </div>
+          <p class="catch">その3桁、勘で当てるか。策で暴くか。</p>
+          <p class="desc">敵が隠した3桁の数字を、ヒットとブローを手がかりに推理して戦う。カードを集めてデッキを組み、ダンジョンを進んでいきます。</p>
+          <div class="tags"><span>数字推理</span><span>デッキ構築</span><span>ひとり／ふたり</span></div>
+          <div class="cta">
+            <a class="play" href="./minukizan/">ブラウザであそぶ</a>
+            <div class="note">インストール不要／無料</div>
+          </div>
+        </div>
+      </article>
 
+      <div class="soon">
+        <b>次の作品</b>
+        <span>準備中です。</span>
+      </div>
+    </section>
+
+    <section class="news">
+      <h2 class="sec-label">お知らせ</h2>
+      <ul>
+        <li><time datetime="2026-09">2026.09</time><span>「見抜き算」を公開しました</span></li>
+        <li><time datetime="2026-09">2026.09</time><span>サイトを開設しました</span></li>
+      </ul>
+    </section>
+
+    <section class="voice">
+      <h2>感想をきかせてください</h2>
+      <p>むずかしすぎた、ここが分かりにくい。ひとことで大丈夫です。次の作品づくりの参考にします。</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfWrt67Qmmsd6UewgJ0VvAefBhn-aMHtwrBl4eM3xWR0xP9qA/viewform" target="_blank" rel="noopener">感想を送る</a>
+    </section>
+  </main>
+
+</div>
 </div>
 </body>
 </html>

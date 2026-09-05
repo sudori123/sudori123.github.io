@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Crect width=%2716%27 height=%2716%27 fill=%27%23000%27/%3E%3Cg fill=%27%23ffe100%27%3E%3Crect x=%277%27 y=%270%27 width=%272%27 height=%272%27/%3E%3Crect x=%274%27 y=%272%27 width=%278%27 height=%271%27/%3E%3Crect x=%273%27 y=%273%27 width=%2710%27 height=%2710%27/%3E%3Crect x=%274%27 y=%2713%27 width=%278%27 height=%271%27/%3E%3C/g%3E%3Crect x=%274%27 y=%276%27 width=%278%27 height=%273%27 fill=%27%23000%27/%3E%3Cg fill=%27%23ffe100%27%3E%3Crect x=%275%27 y=%277%27 width=%272%27 height=%271%27/%3E%3Crect x=%279%27 y=%277%27 width=%272%27 height=%271%27/%3E%3C/g%3E%3C/svg%3E">
+<title>見抜き算のあそび方｜すどりのひとりゲーム工房</title>
+<meta name="description" content="数字推理デッキ構築RPG「見抜き算」のルール解説。ヒットとブローの意味、ダメージの計算、カードとスキルポイント、デッキの育て方までを図で説明します。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="見抜き算のあそび方">
+<meta property="og:description" content="ヒットとブローの意味から、カードの使い方、デッキの育て方まで。">
+<meta property="og:url" content="https://sudori123.github.io/howto.html">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#faf7f2; --card:#fff; --ink:#1c1a17; --sub:#5c574f; --mute:#9a938a;
+  --line:#e6e0d6; --line2:#ded7cb; --tint:#f2ede4;
+  --accent:#3f52a0; --accent-dk:#2e3d7a; --night:#14120f; --yel:#ffe100;
+  --hit:#b0451f; --blow:#8a6d1f;
+  --mincho:'Zen Old Mincho','Hiragino Mincho ProN',serif;
+  --gothic:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;
+}
+@supports (color: oklch(0.45 0.11 265)){
+  :root{ --accent:oklch(0.45 0.11 265); --accent-dk:oklch(0.35 0.11 265);
+         --hit:oklch(0.52 0.15 35); --blow:oklch(0.52 0.11 85); }
+}
+*{ box-sizing:border-box; }
+html{ background:var(--paper); }
+body{ margin:0; background:var(--paper); color:var(--ink); font-family:var(--gothic); line-height:1.95; -webkit-text-size-adjust:100%; }
+a{ color:var(--accent); }
+a:hover{ color:var(--accent-dk); }
+.site{ max-width:720px; margin:0 auto; padding:52px 26px 46px; }
+.back{ font-size:12.5px; text-decoration:none; }
+h1{ font-family:var(--mincho); font-size:25px; font-weight:700; line-height:1.7; margin:26px 0 8px; }
+.sub-t{ font-size:13px; color:var(--mute); margin:0 0 30px; }
+.rule{ width:44px; height:2px; background:var(--accent); margin-bottom:36px; }
+h2{ font-family:var(--mincho); font-size:20px; font-weight:700; margin:46px 0 14px; padding-top:4px; }
+h2 .num{ color:var(--accent); margin-right:.5em; }
+h3{ font-family:var(--mincho); font-size:16px; font-weight:700; margin:30px 0 10px; }
+p{ font-size:14px; color:var(--sub); text-wrap:pretty; margin:0 0 1em; }
+p b{ color:var(--ink); }
+ul{ margin:0 0 1em; padding-left:1.3em; }
+li{ font-size:14px; color:var(--sub); margin-bottom:.5em; text-wrap:pretty; }
+li b{ color:var(--ink); }
+
+.lede{ font-size:15px; color:var(--ink); text-wrap:pretty; }
+
+.board{ background:var(--card); border:1px solid var(--line); padding:24px 22px; margin:0 0 22px; }
+.board-cap{ font-size:11px; letter-spacing:.24em; color:var(--mute); margin-bottom:16px; }
+.row{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:16px; }
+.row:last-child{ margin-bottom:0; }
+.row-label{ flex:0 0 88px; font-size:12.5px; color:var(--mute); }
+.digits{ display:flex; gap:9px; }
+.d{
+  width:46px; height:52px; display:flex; align-items:center; justify-content:center;
+  font-family:var(--mincho); font-size:24px; font-weight:700;
+  border:1px solid var(--line2); background:var(--paper);
+}
+.d.hit{ border:2px solid var(--hit); color:var(--hit); background:#fff; }
+.d.blow{ border:2px dashed var(--blow); color:var(--blow); background:#fff; }
+.d.secret{ background:var(--night); color:var(--yel); border-color:var(--night); }
+.marks{ display:flex; gap:9px; }
+.mk{ width:46px; text-align:center; font-size:11px; color:var(--mute); }
+.mk.hit{ color:var(--hit); }
+.mk.blow{ color:var(--blow); }
+.verdict{ border-top:1px solid var(--line); margin-top:18px; padding-top:16px; font-size:14px; }
+.verdict b{ font-family:var(--mincho); font-size:16px; }
+.verdict .h{ color:var(--hit); }
+.verdict .b{ color:var(--blow); }
+
+.legend{ display:flex; flex-direction:column; gap:14px; margin:0 0 22px; }
+.leg{ display:flex; gap:16px; align-items:flex-start; }
+.leg-key{ flex:0 0 96px; font-family:var(--mincho); font-size:16px; font-weight:700; }
+.leg-key.hit{ color:var(--hit); }
+.leg-key.blow{ color:var(--blow); }
+.leg-body{ font-size:13.5px; color:var(--sub); text-wrap:pretty; }
+.leg-body b{ color:var(--ink); }
+
+table{ width:100%; border-collapse:collapse; margin:0 0 22px; font-size:13.5px; }
+th,td{ text-align:left; padding:11px 12px; border-bottom:1px solid var(--line); }
+th{ font-weight:500; color:var(--mute); font-size:12px; letter-spacing:.06em; }
+td{ color:var(--sub); }
+td:first-child{ color:var(--ink); white-space:nowrap; }
+td.n{ white-space:nowrap; }
+
+.tip{ background:var(--tint); padding:20px 22px; margin:0 0 22px; }
+.tip h3{ margin:0 0 8px; font-size:15px; }
+.tip p{ margin:0; font-size:13.5px; }
+
+.cta-box{ background:var(--card); border:1px solid var(--line); padding:26px 22px; margin:46px 0 0; display:flex; flex-direction:column; gap:13px; align-items:flex-start; }
+.cta-box h2{ margin:0; font-size:18px; }
+.cta-box p{ margin:0; font-size:13.5px; }
+.play{
+  display:block; width:100%; text-align:center; background:var(--accent); color:#fff;
+  text-decoration:none; padding:15px 0; font-size:15px; letter-spacing:.06em; min-height:44px;
+}
+.play:hover, .play:focus-visible{ background:var(--accent-dk); color:#fff; outline:none; }
+
+.foot{ border-top:1px solid var(--line); margin-top:48px; padding-top:22px; font-size:11.5px; color:var(--mute); display:flex; flex-direction:column; gap:10px; }
+.foot a{ text-decoration:none; }
+
+@media (min-width:760px){
+  .site{ padding:74px 40px 56px; }
+  h1{ font-size:28px; }
+  .d{ width:52px; height:58px; font-size:27px; }
+  .mk{ width:52px; }
+  .play{ display:inline-block; width:auto; padding:14px 40px; }
+}
+</style>
+</head>
+<body>
+<div class="site">
+
+<a class="back" href="./">← すどりのひとりゲーム工房</a>
+
+<h1>見抜き算のあそび方</h1>
+<p class="sub-t">はじめての方へ。3分で読めます。</p>
+<div class="rule"></div>
+
+<p class="lede">相手が隠している<b>3桁の数字</b>を当てるゲームです。当てるだけではなく、当てた「惜しさ」がそのまま相手へのダメージになります。カードを使って有利に進めましょう。</p>
+
+<h2><span class="num">1</span>ヒットとブロー</h2>
+
+<p>3桁の数字を予想して言うと、相手が2つの数字で答えます。この2つだけが手がかりです。</p>
+
+<div class="legend">
+  <div class="leg">
+    <div class="leg-key hit">ヒット</div>
+    <div class="leg-body"><b>数字も、置いてある位置も合っている</b>桁の数。</div>
+  </div>
+  <div class="leg">
+    <div class="leg-key blow">ブロー</div>
+    <div class="leg-body"><b>その数字は使われているが、位置が違う</b>桁の数。</div>
+  </div>
+</div>
+
+<p>実際に見てみましょう。相手が隠している数字が <b>4 7 7</b> のとき、あなたが <b>7 4 7</b> と予想すると——</p>
+
+<div class="board">
+  <div class="board-cap">れい</div>
+  <div class="row">
+    <div class="row-label">相手の数字</div>
+    <div class="digits"><div class="d secret">4</div><div class="d secret">7</div><div class="d secret">7</div></div>
+  </div>
+  <div class="row">
+    <div class="row-label">あなたの予想</div>
+    <div>
+      <div class="digits"><div class="d blow">7</div><div class="d blow">4</div><div class="d hit">7</div></div>
+      <div class="marks"><div class="mk blow">ブロー</div><div class="mk blow">ブロー</div><div class="mk hit">ヒット</div></div>
+    </div>
+  </div>
+  <div class="verdict">
+    結果は <b class="h">1ヒット</b>　<b class="b">2ブロー</b><br>
+    3桁目の <b>7</b> は位置まで一致（ヒット）。1桁目の <b>7</b> と2桁目の <b>4</b> は、相手も持っているけれど場所が違います（ブロー）。
+  </div>
+</div>
+
+<p><b>同じ数字が2回以上使われることもあります。</b>上の例のように「7」が2つ入っていることもあるので、1回出たからといって除外してはいけません。</p>
+
+<h2><span class="num">2</span>惜しいほど、強く殴れる</h2>
+
+<p>ここが普通の数当てゲームと違うところです。予想した結果が、そのまま攻撃になります。</p>
+
+<table>
+  <tr><th>結果</th><th>相手に与えるダメージ</th></tr>
+  <tr><td>ヒット1つ</td><td class="n">18ダメージ</td></tr>
+  <tr><td>ブロー1つ</td><td class="n">6ダメージ</td></tr>
+  <tr><td>3ヒット（完全一致）</td><td class="n">その場で勝ち</td></tr>
+</table>
+
+<p>さきほどの「1ヒット2ブロー」なら <b>18 + 6 + 6 = 30ダメージ</b>。HPは<b>100</b>から始まるので、けっこうな痛手です。</p>
+
+<p>相手も同じようにあなたの数字を狙ってきます。<b>先に相手のHPを0にするか、3桁すべてを当てれば勝ち</b>です。数字を完全に当てられなくても、惜しい予想を重ねて削り切れば勝てます。</p>
+
+<div class="tip">
+  <h3>1ラウンドは5ターンまで</h3>
+  <p>5ターン以内に決着がつかないと引き分け扱いになります。のんびり絞り込んでいる時間はありません。<b>当てにいく手と、削る手を切り替える</b>のがこのゲームの考えどころです。</p>
+</div>
+
+<h2><span class="num">3</span>カードとスキルポイント</h2>
+
+<p>毎ターン、手札から<b>カードを1枚使えます</b>。カードを使うには<b>スキルポイント（SP）</b>が必要です。SPはターンごとに少しずつ増えていくので、<b>安いカードを早めに使うか、貯めて強いカードを狙うか</b>を選ぶことになります。</p>
+
+<p>カードは大きく3種類あります。</p>
+
+<table>
+  <tr><th>種類</th><th>できること</th><th>例</th></tr>
+  <tr><td>調べる</td><td>相手の数字の情報を得る</td><td>直感／消去法／透視スコープ</td></tr>
+  <tr><td>殴る</td><td>推理と関係なくダメージを出す</td><td>数字爆弾／渾身の一撃</td></tr>
+  <tr><td>守る</td><td>HPを守る・回復する</td><td>守護結界／治癒の護符</td></tr>
+</table>
+
+<p>たとえば <b>消去法</b> は「相手が使っていない数字を2つ教える」カード。地味ですが、候補が一気に減るので当てるのがぐっと楽になります。<b>数字爆弾</b> は推理が外れていても24ダメージを与えられるので、押し切りたいときに使います。</p>
+
+<p>そして各デッキには<b>必殺技</b>が1枚だけ入っています。SPを9も使いますが、たとえば「終焉の数式」は<b>相手の数字を全部見破ったうえで45ダメージ</b>。決まればほぼ勝ちです。</p>
+
+<h2><span class="num">4</span>デッキを育てる</h2>
+
+<p>デッキは<b>15枚</b>。冒険を繰り返してカードを増やし、自分の戦い方に寄せていきます。</p>
+
+<table>
+  <tr><th>入手先</th><th>手に入るもの</th></tr>
+  <tr><td>ダンジョン</td><td>クリア報酬のカードとコイン</td></tr>
+  <tr><td>ガチャ</td><td>コインを使ってカードを引く</td></tr>
+  <tr><td>デッキ購入</td><td>完成済みのデッキ一式。そこでしか手に入らないカード付き</td></tr>
+</table>
+
+<p>ダンジョンは5つ。奥に進むほど敵が強くなり、報酬もよくなります。</p>
+
+<table>
+  <tr><th>ダンジョン</th><th>むずかしさ</th><th>階層</th></tr>
+  <tr><td>はじまりの丘</td><td>かんたん</td><td class="n">3階</td></tr>
+  <tr><td>ざわめく樹海</td><td>ふつう</td><td class="n">4階</td></tr>
+  <tr><td>鋼鉄の地下道</td><td>むずかしい</td><td class="n">5階</td></tr>
+  <tr><td>氷結の回廊</td><td>高難度</td><td class="n">6階</td></tr>
+  <tr><td>深淵の最果て</td><td>極限</td><td class="n">7階</td></tr>
+</table>
+
+<p>ダンジョンに入るにはスタミナを使います。スタミナは<b>時間で回復</b>するほか、コインと交換もできます。</p>
+
+<h2><span class="num">5</span>勝てないときのコツ</h2>
+
+<h3>最初の予想は、全部ちがう数字で</h3>
+<p>「0 1 2」のように重複のない数字から始めると、一度に3つの数字を試せます。手がかりが多く手に入ります。</p>
+
+<h3>ブローが出た数字は、必ず入っている</h3>
+<p>ブローは「その数字はあるが場所が違う」という意味です。<b>その数字は確定</b>なので、あとは置く場所を変えて試すだけ。ここを意識するだけで当たる速さが変わります。</p>
+
+<h3>当てきれないと思ったら、削りに切り替える</h3>
+<p>5ターンしかありません。残りターンが少ないなら、正解を探すより<b>ブローをたくさん出せそうな予想</b>を選んだほうが勝てることがあります。ブロー3つでも18ダメージです。</p>
+
+<h3>情報カードは、早いターンほど価値が高い</h3>
+<p>同じ「消去法」でも、1ターン目に使えば残り4ターンぶん活きます。最終ターンに使っても意味がありません。<b>調べるカードは先に、殴るカードは後に。</b></p>
+
+<div class="cta-box">
+  <h2>さっそく遊んでみる</h2>
+  <p>インストール不要。スマートフォンでもパソコンでも、開けばすぐ始められます。</p>
+  <a class="play" href="./minukizan/">ブラウザであそぶ</a>
+</div>
+
+<div class="foot">
+  <a href="./">← すどりのひとりゲーム工房</a>
+  <a href="./privacy.html">プライバシーポリシー</a>
+  <div>&copy; 2026 すどりのひとりゲーム工房</div>
+</div>
+
+</div>
+</body>
+</html>
